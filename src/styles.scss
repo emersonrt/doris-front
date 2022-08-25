@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+$primary: #235E99;
+$secundary: #8598AB;
+$sucess: #52D977;
+$danger: #A6362E;
+$warning: #DE9D8C;
+$info: #52D9D5;
+
+@import "~bootstrap/scss/bootstrap.scss";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
