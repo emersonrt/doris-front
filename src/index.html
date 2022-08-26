@@ -25,7 +25,7 @@
                 function handler(obj) {
                     var variaveis_salvas = obj.data?.context?.skills['actions skill'].skill_variables;
                     console.log('variaveis_salvas no index:', variaveis_salvas);
-                    if (variaveis_salvas?.ready_to_send) { // definir isso no bot
+                    if (variaveis_salvas?.Nome_do_candidato) { // definir isso no bot
                         var evt = new CustomEvent("sendDataToAngular", { detail: variaveis_salvas });
                         window.dispatchEvent(evt);
                     }

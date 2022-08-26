@@ -73,7 +73,8 @@
               "browserTarget": "doris-front:build:production"
             },
             "development": {
-              "browserTarget": "doris-front:build:development"
+              "browserTarget": "doris-front:build:development",
+              "proxyConfig": "./proxy.config.json"
             }
           },
           "defaultConfiguration": "development"
