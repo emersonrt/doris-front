@@ -1,5 +1,5 @@
-import { CandidatoRequest } from './../../models/request/CandidatoRequest';
-import { CandidatoResponse } from './../../models/response/CandidatoResponse';
+import { CandidatoRequest } from '../../models/request/CandidatoRequest';
+import { CandidatoResponse } from '../../models/response/CandidatoResponse';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 @Injectable({
     providedIn: 'root'
 })
-export class CandidatoServiceService {
+export class CandidatoService {
 
     private url = 'http://localhost:8080/api/candidato';
 

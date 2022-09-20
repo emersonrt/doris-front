@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt">
 
 <head>
     <meta charset="utf-8">
@@ -16,34 +16,43 @@
 <body class="mat-typography">
     <app-root></app-root>
     <script>
-        window.watsonAssistantChatOptions = {
-            integrationID: 'a3ad527b-ce14-41b0-a9d9-c6080950919a', // The ID of this integration.
-            region: 'au-syd', // The region your integration is hosted in.
-            serviceInstanceID: '58055413-4c69-403c-a928-889b335c52e6', // The ID of your service instance.
-            showCloseAndRestartButton: true,
-            onLoad: function (instance) {
-                function handler(obj) {
-                    var variaveis_salvas = obj.data?.context?.skills['actions skill'].skill_variables;
-                    console.log('variaveis_salvas no index:', variaveis_salvas);
-                    if (variaveis_salvas?.Nome_do_candidato) { // definir isso no bot
-                        var evt = new CustomEvent("sendDataToAngular", { detail: variaveis_salvas });
-                        window.dispatchEvent(evt);
-                    }
-                }
+        const linkAtualNaoEhIframe = function () {
+            return window.location.pathname != '/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlDDoWdpbmEgU2VsZcOnw6NvIFNvZnQgU2tpbGwgUMOhZ2luYSBTZWxlw6fDo28gU29mdCBTa2lsbCBQw6FnaW5hIFNlbGXDp8OjbyBTb2Z0IFNraWxsIFDDoWdpbmEgU2VsZcOnw6NvIFNvZnQgU2tpbGwgUMOhZ2luYSBTZWxlw6fDo28gU29mdCBTa2lsbCBQw6FnaW5hIFNlbGXDp8OjbyBTb2Z0IFNraWxsIFDDoWdpbmEgU2VsZcOnw6NvIFNvZnQgU2tpbGwgUMOhZ2luYSBTZWxlw6fDo28gU29mdCBTa2lsbCBQw6FnaW5hIFNlbGXDp8OjbyBTb2Z0IFNraWxsIFDDoWdpbmEgU2VsZcOnw6NvIFNvZnQgU2tpbGwgUMOhZ2luYSBTZWxlw6fDo28gU29mdCBTa2lsbCBQw6FnaW5hIFNlbGXDp8OjbyBTb2Z0IFNraWxsIiwiaWF0IjoxNTE2MjM5MDIyfQ.kvxBDG6bZgHo6l6U-uwhA0DxUE1Uup9p88DuKinu4Lw' &&
+                window.location.pathname != '/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlDDoWdpbmEgU2VsZcOnw6NvIEhhcmQgU2tpbGwgUMOhZ2luYSBTZWxlw6fDo28gSGFyZCBTa2lsbCBQw6FnaW5hIFNlbGXDp8OjbyBIYXJkIFNraWxsIFDDoWdpbmEgU2VsZcOnw6NvIEhhcmQgU2tpbGwgUMOhZ2luYSBTZWxlw6fDo28gSGFyZCBTa2lsbCBQw6FnaW5hIFNlbGXDp8OjbyBIYXJkIFNraWxsIFDDoWdpbmEgU2VsZcOnw6NvIEhhcmQgU2tpbGwgUMOhZ2luYSBTZWxlw6fDo28gSGFyZCBTa2lsbCBQw6FnaW5hIFNlbGXDp8OjbyBIYXJkIFNraWxsIFDDoWdpbmEgU2VsZcOnw6NvIEhhcmQgU2tpbGwgUMOhZ2luYSBTZWxlw6fDo28gSGFyZCBTa2lsbCBQw6FnaW5hIFNlbGXDp8OjbyBIYXJkIFNraWxsIiwiaWF0IjoxNTE2MjM5MDIyfQ.lyTAKvzAmyfW9hjvtdbxK3pT4SK7-NsJyQDXlu3i8zY';
+        }
 
-                instance.on({ type: 'receive', handler: handler });
-                instance.render();
-            },
-        };
-        setTimeout(function () {
-            const t = document.createElement('script');
-            t.src =
-                'https://web-chat.global.assistant.watson.appdomain.cloud/versions/' +
-                (window.watsonAssistantChatOptions.clientVersion ||
-                    'latest') +
-                '/WatsonAssistantChatEntry.js';
-            document.head.appendChild(t);
-        });
+        if (linkAtualNaoEhIframe()) {
+            window.watsonAssistantChatOptions = {
+                integrationID: 'a3ad527b-ce14-41b0-a9d9-c6080950919a', // The ID of this integration.
+                region: 'au-syd', // The region your integration is hosted in.
+                serviceInstanceID: '58055413-4c69-403c-a928-889b335c52e6', // The ID of your service instance.
+                showCloseAndRestartButton: true,
+                openChatByDefault: true,
+                onLoad: function (instance) {
+                    function handler(obj) {
+                        var variaveis_salvas = obj.data?.context?.skills['actions skill'].skill_variables;
+                        console.log('variaveis_salvas no index:', variaveis_salvas);
+                        if (variaveis_salvas?.Nome_do_candidato) { // definir isso no bot
+                            var evt = new CustomEvent("sendDataToAngular", { detail: variaveis_salvas });
+                            window.dispatchEvent(evt);
+                        }
+                    }
+
+                    instance.on({ type: 'receive', handler: handler });
+                    instance.updateLocale('pt-br');
+                    instance.render();
+                },
+            };
+            setTimeout(function () {
+                const t = document.createElement('script');
+                t.src =
+                    'https://web-chat.global.assistant.watson.appdomain.cloud/versions/' +
+                    (window.watsonAssistantChatOptions.clientVersion ||
+                        'latest') +
+                    '/WatsonAssistantChatEntry.js';
+                document.head.appendChild(t);
+            });
+        }
     </script>
 </body>
 
