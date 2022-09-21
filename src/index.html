@@ -16,12 +16,7 @@
 <body class="mat-typography">
     <app-root></app-root>
     <script>
-        const linkAtualNaoEhIframe = function () {
-            return window.location.pathname != '/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlDDoWdpbmEgU2VsZcOnw6NvIFNvZnQgU2tpbGwgUMOhZ2luYSBTZWxlw6fDo28gU29mdCBTa2lsbCBQw6FnaW5hIFNlbGXDp8OjbyBTb2Z0IFNraWxsIFDDoWdpbmEgU2VsZcOnw6NvIFNvZnQgU2tpbGwgUMOhZ2luYSBTZWxlw6fDo28gU29mdCBTa2lsbCBQw6FnaW5hIFNlbGXDp8OjbyBTb2Z0IFNraWxsIFDDoWdpbmEgU2VsZcOnw6NvIFNvZnQgU2tpbGwgUMOhZ2luYSBTZWxlw6fDo28gU29mdCBTa2lsbCBQw6FnaW5hIFNlbGXDp8OjbyBTb2Z0IFNraWxsIFDDoWdpbmEgU2VsZcOnw6NvIFNvZnQgU2tpbGwgUMOhZ2luYSBTZWxlw6fDo28gU29mdCBTa2lsbCBQw6FnaW5hIFNlbGXDp8OjbyBTb2Z0IFNraWxsIiwiaWF0IjoxNTE2MjM5MDIyfQ.kvxBDG6bZgHo6l6U-uwhA0DxUE1Uup9p88DuKinu4Lw' &&
-                window.location.pathname != '/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlDDoWdpbmEgU2VsZcOnw6NvIEhhcmQgU2tpbGwgUMOhZ2luYSBTZWxlw6fDo28gSGFyZCBTa2lsbCBQw6FnaW5hIFNlbGXDp8OjbyBIYXJkIFNraWxsIFDDoWdpbmEgU2VsZcOnw6NvIEhhcmQgU2tpbGwgUMOhZ2luYSBTZWxlw6fDo28gSGFyZCBTa2lsbCBQw6FnaW5hIFNlbGXDp8OjbyBIYXJkIFNraWxsIFDDoWdpbmEgU2VsZcOnw6NvIEhhcmQgU2tpbGwgUMOhZ2luYSBTZWxlw6fDo28gSGFyZCBTa2lsbCBQw6FnaW5hIFNlbGXDp8OjbyBIYXJkIFNraWxsIFDDoWdpbmEgU2VsZcOnw6NvIEhhcmQgU2tpbGwgUMOhZ2luYSBTZWxlw6fDo28gSGFyZCBTa2lsbCBQw6FnaW5hIFNlbGXDp8OjbyBIYXJkIFNraWxsIiwiaWF0IjoxNTE2MjM5MDIyfQ.lyTAKvzAmyfW9hjvtdbxK3pT4SK7-NsJyQDXlu3i8zY';
-        }
-
-        if (linkAtualNaoEhIframe()) {
+        if (window.location.pathname === '/landing-page' || window.location.pathname === '' || window.location.pathname === '/') {
             window.watsonAssistantChatOptions = {
                 integrationID: 'a3ad527b-ce14-41b0-a9d9-c6080950919a', // The ID of this integration.
                 region: 'au-syd', // The region your integration is hosted in.
@@ -31,14 +26,19 @@
                 onLoad: function (instance) {
                     function handler(obj) {
                         var variaveis_salvas = obj.data?.context?.skills['actions skill'].skill_variables;
-                        console.log('variaveis_salvas no index:', variaveis_salvas);
+                        // console.log('variaveis_salvas no index:', variaveis_salvas);
                         if (variaveis_salvas?.Nome_do_candidato) { // definir isso no bot
                             var evt = new CustomEvent("sendDataToAngular", { detail: variaveis_salvas });
                             window.dispatchEvent(evt);
                         }
                     }
 
+                    function restartConversation() {
+                        window.localStorage.clear();
+                    }
+
                     instance.on({ type: 'receive', handler: handler });
+                    instance.on({ type: 'restartConversation', handler: restartConversation })
                     instance.updateLocale('pt-br');
                     instance.render();
                 },

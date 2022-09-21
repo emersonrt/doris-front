@@ -4,6 +4,7 @@ import { HardSkillsComponent } from './hard-skills.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -12,6 +13,8 @@ import { MatIconModule } from '@angular/material/icon';
     ],
     imports: [
         CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
         MatInputModule,
         MatButtonModule,
         MatIconModule

@@ -1,9 +1,6 @@
-import { CadastroCandidatoModule } from './views/cadastro-candidato/cadastro-candidato.module';
 import { CadastroCandidatoComponent } from './views/cadastro-candidato/cadastro-candidato.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TesteComponent } from './components/teste/teste.component';
-import { TesteModule } from './components/teste/teste.module';
 import { HardSkillsComponent } from './components/hard-skills/hard-skills.component';
 import { SoftSkillsComponent } from './components/soft-skills/soft-skills.component';
 

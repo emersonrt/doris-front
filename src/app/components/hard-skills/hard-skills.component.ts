@@ -1,25 +1,42 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Hardskill } from 'src/app/models/Hardskill';
+import { ContextoSessaoService } from './../../services/contexto-sessao/contexto-sessao.service';
+import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
+import { HardSkill } from 'src/app/models/HardSkill';
+import { filter, fromEvent, map, Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-hard-skills',
     templateUrl: './hard-skills.component.html',
     styleUrls: ['./hard-skills.component.scss']
 })
-export class HardSkillsComponent implements OnInit {
+export class HardSkillsComponent implements OnInit, OnDestroy {
 
-    listaHabilidades: Hardskill[] = [{ habilidade: '', tempoExperiencia: 0 }];
+    listaHabilidades: HardSkill[] = [{ habilidade: '', tempoExperiencia: 0 }];
+    bloquearAlteracoesHardSkill: boolean = false;
+    subscricaoConfirmacao: Subscription = new Subscription();
 
-    constructor() { }
+    constructor(private sessaoService: ContextoSessaoService) { }
 
     ngOnInit(): void {
-        //puxar hardskills do contexto de sessão
+        this.listaHabilidades = this.sessaoService.getValue('HardSkills') || this.listaHabilidades;
+        this.bloquearAlteracoesHardSkill = this.sessaoService.getValue('HardSkillsConfirmado') || false;
+        this.subscricaoConfirmacao = this.sessaoService.watchvalue('HardSkillsConfirmado').subscribe(value => {
+            this.bloquearAlteracoesHardSkill = Boolean(value);
+        });
+    }
+
+    ngOnDestroy(): void {
+        this.subscricaoConfirmacao.unsubscribe();
     }
 
     adicionarHabilidade() {
         this.listaHabilidades.push({ habilidade: '', tempoExperiencia: 0 });
-        //if liberar_alteracao_hardskill
-        //emitir alteração nas hardskills
+    }
+
+    onChangeHardSkill() {
+        if (!this.bloquearAlteracoesHardSkill) {
+            this.listaHabilidades = this.listaHabilidades.filter(value => { return value.habilidade; });
+            this.sessaoService.updateValue('HardSkills', this.listaHabilidades);
+        }
     }
 
 }

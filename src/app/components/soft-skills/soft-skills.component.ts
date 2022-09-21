@@ -1,4 +1,7 @@
+import { SoftSkill } from './../../models/SoftSkill';
+import { ContextoSessaoService } from './../../services/contexto-sessao/contexto-sessao.service';
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-soft-skills',
@@ -7,18 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SoftSkillsComponent implements OnInit {
 
-    listaHabilidades: string[] = [''];
+    listaHabilidades: SoftSkill[] = [{ habilidade: '' }];
+    bloquearAlteracoesSoftSkill: boolean = false;
+    subscricaoConfirmacao: Subscription = new Subscription();
 
-    constructor() { }
+    constructor(private sessaoService: ContextoSessaoService) { }
 
     ngOnInit(): void {
-        //puxar softskills do contexto de sessão
+        this.listaHabilidades = this.sessaoService.getValue('SoftSkills') || this.listaHabilidades;
+        this.bloquearAlteracoesSoftSkill = this.sessaoService.getValue('SoftSkillsConfirmado') || false;
+        this.subscricaoConfirmacao = this.sessaoService.watchvalue('SoftSkillsConfirmado').subscribe(value => {
+            this.bloquearAlteracoesSoftSkill = Boolean(value);
+        });
     }
 
     adicionarHabilidade() {
-        this.listaHabilidades.push('');
-        //if liberar_alteracao_softskill
-        //emitir alteração nas softskills
+        this.listaHabilidades.push({ habilidade: '' });
+    }
+
+    ngOnDestroy(): void {
+        this.subscricaoConfirmacao.unsubscribe();
+    }
+
+    onChangeSoftSkill() {
+        if (!this.bloquearAlteracoesSoftSkill) {
+            this.listaHabilidades = this.listaHabilidades.filter(value => { return value; });
+            this.sessaoService.updateValue('SoftSkills', this.listaHabilidades);
+        }
     }
 
 }

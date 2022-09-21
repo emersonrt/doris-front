@@ -2,37 +2,52 @@
     <div class="col">
 
         <h1 class="text-center">Insira aqui as suas hard skills:</h1>
-        <form class="example-form">
-            <div class="d-flex justify-content-center">
-                <table cellspacing="0">
-                    <tr *ngFor="let item of listaHabilidades">
-                        <td>
-                            <mat-form-field class="w-160">
-                                <mat-label>Habilidade</mat-label>
-                                <input matInput placeholder="Ex: Java, SEO, LLVM">
-                            </mat-form-field>
-                        </td>
-                        <td>
-                            <mat-form-field class="ms-3 w-145">
-                                <mat-label>Experiência (em anos)</mat-label>
-                                <input matInput type="number" step="1" min="0" max="100">
-                            </mat-form-field>
-                        </td>
-                    </tr>
-                </table>
-            </div>
+        <div class="d-flex justify-content-center">
+            <table cellspacing="0">
+                <tr *ngFor="let item of listaHabilidades">
+                    <td>
+                        <mat-form-field class="w-160">
+                            <mat-label>Habilidade</mat-label>
+                            <input matInput placeholder="Ex: Java, SEO, LLVM" maxlength="40"
+                                [(ngModel)]="item.habilidade" (change)="onChangeHardSkill()"
+                                [disabled]="bloquearAlteracoesHardSkill">
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="ms-3 w-145">
+                            <mat-label>Experiência (em anos)</mat-label>
+                            <input matInput type="number" step="1" min="0" max="100" [(ngModel)]="item.tempoExperiencia"
+                                (change)="onChangeHardSkill()" [disabled]="bloquearAlteracoesHardSkill">
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
-            <div class="d-flex justify-content-center">
-                <button type="button" mat-raised-button (click)="adicionarHabilidade()">Adicionar Habilidade
-                    <mat-icon>add</mat-icon>
-                </button>
-            </div>
-        </form>
+        <div class="d-flex justify-content-center">
+            <button type="button" mat-raised-button (click)="adicionarHabilidade()"
+                [disabled]="bloquearAlteracoesHardSkill">Adicionar Habilidade
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
 
-        <p class="text-center text-secondary mt-5 mb-3">Após finalizar clique no ícone
-            <img src="https://uploaddeimagens.com.br/images/004/027/870/original/Screenshot_from_2022-09-19_19-56-11.png?1663628345"
-                alt="opção voltar" style="width: 23px;">
+        <p class="text-center text-secondary mt-5 mb-3" *ngIf="!bloquearAlteracoesHardSkill; else mensagemConfirmado;">
+            Após finalizar clique no ícone
+            <img class="w-23"
+                src="https://uploaddeimagens.com.br/images/004/027/870/original/Screenshot_from_2022-09-19_19-56-11.png?1663628345"
+                alt="opção voltar">
             acima, e depois no botão confirmar.
         </p>
+
+        <ng-template #mensagemConfirmado>
+            <p class="text-center text-secondary mt-5 mb-3">Suas alterações já foram confirmadas.
+                Clique no ícone
+                <img class="w-23"
+                    src="https://uploaddeimagens.com.br/images/004/027/870/original/Screenshot_from_2022-09-19_19-56-11.png?1663628345"
+                    alt="opção voltar">
+                acima para retornar.
+            </p>
+        </ng-template>
+
     </div>
 </div>
