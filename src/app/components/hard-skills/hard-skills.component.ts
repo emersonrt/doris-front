@@ -1,7 +1,7 @@
 import { ContextoSessaoService } from './../../services/contexto-sessao/contexto-sessao.service';
-import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
-import { HardSkill } from 'src/app/models/HardSkill';
-import { filter, fromEvent, map, Subscription } from 'rxjs';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { HardSkill } from 'src/app/models/request/HardSkill';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-hard-skills',

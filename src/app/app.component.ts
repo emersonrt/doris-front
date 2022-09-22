@@ -1,9 +1,11 @@
-import { HardSkill } from 'src/app/models/HardSkill';
-import { CandidatoPreRequest } from './models/request/CandidatoPreRequest';
+import { SoftSkill } from './models/request/SoftSkill';
+import { HardSkill } from 'src/app/models/request/HardSkill';
 import { ContextoSessaoService } from './services/contexto-sessao/contexto-sessao.service';
 import { CandidatoService } from './services/candidato/candidato.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
+import { Mapper } from './models/Mapper';
+import { CandidatoRequest } from './models/request/CandidatoRequest';
 
 @Component({
     selector: 'app-root',
@@ -23,21 +25,7 @@ export class AppComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.dataFromDorisEvent = fromEvent(window, 'sendDataToAngular').subscribe((result: any) => {
             console.log('variaveis_salvas no app:', result?.detail);
-            this.atualizaDadosNaSessao(result?.detail);
-
-            // this.candidatoService.cadastrar(
-            //     {
-            //         nome: result?.detail.Nome_do_candidato,
-            //         email: result?.detail.Email.value
-            //     } as CandidatoRequest
-            // ).subscribe({
-            //     next: (response) => {
-            //         console.log('sucesso:', response);
-            //     },
-            //     error: (error) => {
-            //         console.log('error:', error);
-            //     }
-            // });
+            this.atualizaDadosSessao(result?.detail);
         });
 
         // this.candidatoService.buscarTodos().subscribe({
@@ -50,23 +38,30 @@ export class AppComponent implements OnInit, OnDestroy {
         // });
     }
 
-    atualizaDadosNaSessao(dados: any) {
-        let hardsSkills: HardSkill[] = this.sessaoService.getValue('HardSkills');
-        let softSkills: string[] = this.sessaoService.getValue('SoftSkills');
-
-        this.sessaoService.updateValue('DadosCandidato', {
-            nome: dados.Nome_do_candidato?.value,
-            dataNascimento: dados.Data_de_nascimento?.value,
-            email: dados.Email?.value,
-            telefoneCelular: dados.Telefone_celular?.value,
-            hardSkills: hardsSkills,
-            softSkills: softSkills
-        } as CandidatoPreRequest);
+    private atualizaDadosSessao(dados: any) {
+        if (Boolean(JSON.parse(dados.Flag_finalizado))) {
+            console.log('dados.Flag_finalizado', dados.Flag_finalizado);
+            
+            let hardsSkills: HardSkill[] = this.sessaoService.getValue('HardSkills');
+            let softSkills: SoftSkill[] = this.sessaoService.getValue('SoftSkills');
+            // this.sessaoService.updateValue('DadosCandidato', Mapper.fromDoris(dados, hardsSkills, softSkills));
+            console.log('dados candidato', Mapper.fromDoris(dados, hardsSkills, softSkills));
+            this.cadastrarCandidato(Mapper.fromDoris(dados, hardsSkills, softSkills));
+        }
 
         this.sessaoService.updateValue('HardSkillsConfirmado', dados.Confirmar_hard_skills);
         this.sessaoService.updateValue('SoftSkillsConfirmado', dados.Confirmar_soft_skills);
+    }
 
-        console.log('dados candidato', this.sessaoService.getValue('DadosCandidato'));
+    private cadastrarCandidato(dadosCandidato: CandidatoRequest) {
+        this.candidatoService.cadastrar(dadosCandidato).subscribe({
+            next: (response) => {
+                console.log('sucesso:', response);
+            },
+            error: (error) => {
+                console.log('error:', error);
+            }
+        });
     }
 
     ngOnDestroy() {

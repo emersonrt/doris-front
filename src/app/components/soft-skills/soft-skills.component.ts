@@ -1,4 +1,4 @@
-import { SoftSkill } from './../../models/SoftSkill';
+import { SoftSkill } from '../../models/request/SoftSkill';
 import { ContextoSessaoService } from './../../services/contexto-sessao/contexto-sessao.service';
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';

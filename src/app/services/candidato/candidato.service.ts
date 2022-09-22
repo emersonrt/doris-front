@@ -1,8 +1,8 @@
-import { CandidatoRequest } from '../../models/request/CandidatoRequest';
 import { CandidatoResponse } from '../../models/response/CandidatoResponse';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { CandidatoRequest } from 'src/app/models/request/CandidatoRequest';
 
 @Injectable({
     providedIn: 'root'

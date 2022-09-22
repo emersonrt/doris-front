@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+import { InfoRetornarIframeModule } from './../info-retornar-iframe/info-retornar-iframe.module';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HardSkillsComponent } from './hard-skills.component';
 import { MatInputModule } from '@angular/material/input';
@@ -17,7 +18,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         ReactiveFormsModule,
         MatInputModule,
         MatButtonModule,
-        MatIconModule
-    ]
+        MatIconModule,
+        InfoRetornarIframeModule
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HardSkillsModule { }
