@@ -3,21 +3,21 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CadastroCandidatoComponent } from './cadastro-candidato.component';
 
 describe('CadastroCandidatoComponent', () => {
-  let component: CadastroCandidatoComponent;
-  let fixture: ComponentFixture<CadastroCandidatoComponent>;
+    let component: CadastroCandidatoComponent;
+    let fixture: ComponentFixture<CadastroCandidatoComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ CadastroCandidatoComponent ]
-    })
-    .compileComponents();
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            declarations: [CadastroCandidatoComponent]
+        })
+            .compileComponents();
 
-    fixture = TestBed.createComponent(CadastroCandidatoComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+        fixture = TestBed.createComponent(CadastroCandidatoComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

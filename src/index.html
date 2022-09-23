@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DorisFront</title>
+    <title>Dóris</title>
     <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -26,11 +26,8 @@
                 onLoad: function (instance) {
                     function handler(obj) {
                         var variaveis_salvas = obj.data?.context?.skills['actions skill'].skill_variables;
-                        // console.log('variaveis_salvas no index:', variaveis_salvas);
-                        if (variaveis_salvas?.Nome_do_candidato) { // definir isso no bot
-                            var evt = new CustomEvent("sendDataToAngular", { detail: variaveis_salvas });
-                            window.dispatchEvent(evt);
-                        }
+                        var evt = new CustomEvent("sendDataToAngular", { detail: variaveis_salvas });
+                        window.dispatchEvent(evt);
                     }
 
                     function restartConversation() {
