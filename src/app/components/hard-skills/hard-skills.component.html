@@ -4,9 +4,9 @@
         <h1 class="text-center">Insira aqui as suas hard skills:</h1>
         <div class="d-flex justify-content-center">
             <table cellspacing="0">
-                <tr *ngFor="let item of listaHabilidades">
+                <tr *ngFor="let item of listaHabilidades; let i = index">
                     <td>
-                        <mat-form-field class="w-160">
+                        <mat-form-field class="w-150">
                             <mat-label>Habilidade</mat-label>
                             <input matInput placeholder="Ex: Java, SEO, LLVM" maxlength="40"
                                 [(ngModel)]="item.habilidade" (change)="onChangeHardSkill()"
@@ -14,11 +14,17 @@
                         </mat-form-field>
                     </td>
                     <td>
-                        <mat-form-field class="ms-3 w-145">
+                        <mat-form-field class="ms-3 w-110">
                             <mat-label>Experiência (em anos)</mat-label>
                             <input matInput type="number" step="1" min="0" max="100" [(ngModel)]="item.tempoExperiencia"
                                 (change)="onChangeHardSkill()" [disabled]="bloquearAlteracoesHardSkill">
                         </mat-form-field>
+                    </td>
+                    <td *ngIf="i != 0">
+                        <button type="button" mat-icon-button class="mx-1" (click)="removerHabilidade(i)"
+                            [disabled]="bloquearAlteracoesHardSkill">
+                            <mat-icon>delete</mat-icon>
+                        </button>
                     </td>
                 </tr>
             </table>
@@ -31,7 +37,7 @@
             </button>
         </div>
 
-        <app-info-retornar-iframe></app-info-retornar-iframe>
+        <app-info-retornar-iframe [alteracoes-liberadas]="!bloquearAlteracoesHardSkill"></app-info-retornar-iframe>
 
     </div>
 </div>

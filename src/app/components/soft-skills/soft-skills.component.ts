@@ -20,12 +20,18 @@ export class SoftSkillsComponent implements OnInit {
         this.listaHabilidades = this.sessaoService.getValue('SoftSkills') || this.listaHabilidades;
         this.bloquearAlteracoesSoftSkill = this.sessaoService.getValue('SoftSkillsConfirmado') || false;
         this.subscricaoConfirmacao = this.sessaoService.watchvalue('SoftSkillsConfirmado').subscribe(value => {
+            this.removeHabilidadesVazias();
             this.bloquearAlteracoesSoftSkill = Boolean(value);
+            this.sessaoService.updateValue('SoftSkills', this.listaHabilidades);
         });
     }
 
     adicionarHabilidade() {
         this.listaHabilidades.push({ habilidade: '' });
+    }
+
+    removerHabilidade(index: number) {
+        this.listaHabilidades.splice(index, 1);
     }
 
     ngOnDestroy(): void {
@@ -34,9 +40,15 @@ export class SoftSkillsComponent implements OnInit {
 
     onChangeSoftSkill() {
         if (!this.bloquearAlteracoesSoftSkill) {
-            this.listaHabilidades = this.listaHabilidades.filter(value => { return value; });
             this.sessaoService.updateValue('SoftSkills', this.listaHabilidades);
         }
+    }
+
+    private removeHabilidadesVazias() {
+        console.log('this.listaHabilidades antes', this.listaHabilidades);
+        
+        this.listaHabilidades = this.listaHabilidades.filter(value => { return value.habilidade; });
+        console.log('this.listaHabilidades depois', this.listaHabilidades);
     }
 
 }

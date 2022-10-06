@@ -20,7 +20,9 @@ export class HardSkillsComponent implements OnInit, OnDestroy {
         this.listaHabilidades = this.sessaoService.getValue('HardSkills') || this.listaHabilidades;
         this.bloquearAlteracoesHardSkill = this.sessaoService.getValue('HardSkillsConfirmado') || false;
         this.subscricaoConfirmacao = this.sessaoService.watchvalue('HardSkillsConfirmado').subscribe(value => {
+            this.removeHabilidadesVazias();
             this.bloquearAlteracoesHardSkill = Boolean(value);
+            this.sessaoService.updateValue('HardSkills', this.listaHabilidades);
         });
     }
 
@@ -32,11 +34,18 @@ export class HardSkillsComponent implements OnInit, OnDestroy {
         this.listaHabilidades.push({ habilidade: '', tempoExperiencia: 0 });
     }
 
+    removerHabilidade(index: number) {
+        this.listaHabilidades.splice(index, 1);
+    }
+
     onChangeHardSkill() {
         if (!this.bloquearAlteracoesHardSkill) {
-            this.listaHabilidades = this.listaHabilidades.filter(value => { return value.habilidade; });
             this.sessaoService.updateValue('HardSkills', this.listaHabilidades);
         }
+    }
+
+    private removeHabilidadesVazias() {
+        this.listaHabilidades = this.listaHabilidades.filter(value => { return value.habilidade; });
     }
 
 }

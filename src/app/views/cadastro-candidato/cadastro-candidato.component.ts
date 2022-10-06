@@ -40,7 +40,7 @@ export class CadastroCandidatoComponent implements OnInit, OnDestroy {
         if (Boolean(JSON.parse(dados.Flag_finalizado))) {
             let hardsSkills: HardSkill[] = this.sessaoService.getValue('HardSkills');
             let softSkills: SoftSkill[] = this.sessaoService.getValue('SoftSkills');
-            
+
             // this.sessaoService.updateValue('DadosCandidato', Mapper.fromDoris(dados, hardsSkills, softSkills));
             console.log('dados candidato', Mapper.fromDoris(dados, hardsSkills, softSkills));
             this.cadastrarCandidato(Mapper.fromDoris(dados, hardsSkills, softSkills));
@@ -62,9 +62,11 @@ export class CadastroCandidatoComponent implements OnInit, OnDestroy {
         this.candidatoService.cadastrar(dadosCandidato).subscribe({
             next: (response) => {
                 console.log('sucesso:', response);
+                this.sessaoService.clearAllStorage();
             },
             error: (error) => {
                 console.log('error:', error);
+                this.sessaoService.clearAllStorage();
             }
         });
     }

@@ -14,6 +14,8 @@ export interface CandidatoRequest {
     softSkills: SoftSkill[];
     formacoes: Formacao[];
     linksRelevantes: string[];
+    cargaHoraria: string;
+    turno: string;
     modalidadeTrabalho: string;
     cidadeResidencia: string;
     disponibilidadeRelocacao: boolean;
@@ -23,4 +25,5 @@ export interface CandidatoRequest {
     experiencias: Experiencia[];
     pontosFortes: string;
     pontosFracos: string;
+    informacaoRelevante: string;
 }

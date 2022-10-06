@@ -4,7 +4,7 @@
         <h1 class="text-center">Insira aqui as suas soft skills:</h1>
         <div class="d-flex justify-content-center">
             <table cellspacing="0">
-                <tr *ngFor="let item of listaHabilidades">
+                <tr *ngFor="let item of listaHabilidades; let i = index">
                     <td>
                         <mat-form-field class="w-250">
                             <mat-label>Habilidade</mat-label>
@@ -12,6 +12,12 @@
                                 [(ngModel)]="item.habilidade" (change)="onChangeSoftSkill()"
                                 [disabled]="bloquearAlteracoesSoftSkill">
                         </mat-form-field>
+                    </td>
+                    <td *ngIf="i != 0">
+                        <button type="button" mat-icon-button class="mx-1" (click)="removerHabilidade(i)"
+                            [disabled]="bloquearAlteracoesSoftSkill">
+                            <mat-icon>delete</mat-icon>
+                        </button>
                     </td>
                 </tr>
             </table>

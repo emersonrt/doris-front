@@ -18,7 +18,9 @@ export class Mapper {
             linksRelevantes: this.fromLinks(dados.arrayLinksRelevantes),
             hardSkills: hardsSkills,
             softSkills: softSkills,
-            modalidadeTrabalho: dados.Modalidade,
+            cargaHoraria: dados.Carga_horaria,
+            turno: dados.Turnos || dados.Turno,
+            modalidadeTrabalho: dados.Modalidades_de_trabalho,
             cidadeResidencia: dados.Cidade_de_residencia,
             disponibilidadeRelocacao: true,
             areaInteresse: dados.Area_de_interesse_2 || dados.Area_de_interesse,
@@ -26,7 +28,8 @@ export class Mapper {
             certificacoes: this.fromCertificacoes(dados.arrayCertificacoesFormacoes),
             experiencias: this.fromExperiencias(dados.arrayExperienciasProfissionais),
             pontosFortes: dados.Pontos_fortes,
-            pontosFracos: dados.Pontos_fracos
+            pontosFracos: dados.Pontos_fracos,
+            informacaoRelevante: dados.Informacao_relevante
         } as CandidatoRequest;
     }
 
