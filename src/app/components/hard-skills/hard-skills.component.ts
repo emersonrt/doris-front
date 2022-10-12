@@ -1,3 +1,4 @@
+import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { ContextoSessaoService } from './../../services/contexto-sessao/contexto-sessao.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HardSkill } from 'src/app/models/request/HardSkill';
@@ -14,7 +15,7 @@ export class HardSkillsComponent implements OnInit, OnDestroy {
     bloquearAlteracoesHardSkill: boolean = false;
     subscricaoConfirmacao: Subscription = new Subscription();
 
-    constructor(private sessaoService: ContextoSessaoService) { }
+    constructor(private sessaoService: ContextoSessaoService, private announcerService: LiveAnnouncer) { }
 
     ngOnInit(): void {
         this.listaHabilidades = this.sessaoService.getValue('HardSkills') || this.listaHabilidades;
@@ -36,6 +37,7 @@ export class HardSkillsComponent implements OnInit, OnDestroy {
 
     removerHabilidade(index: number) {
         this.listaHabilidades.splice(index, 1);
+        this.announcerService.announce('habilidade excluída');
     }
 
     onChangeHardSkill() {

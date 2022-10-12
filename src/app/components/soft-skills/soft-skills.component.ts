@@ -2,6 +2,7 @@ import { SoftSkill } from '../../models/request/SoftSkill';
 import { ContextoSessaoService } from './../../services/contexto-sessao/contexto-sessao.service';
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 @Component({
     selector: 'app-soft-skills',
@@ -14,7 +15,7 @@ export class SoftSkillsComponent implements OnInit {
     bloquearAlteracoesSoftSkill: boolean = false;
     subscricaoConfirmacao: Subscription = new Subscription();
 
-    constructor(private sessaoService: ContextoSessaoService) { }
+    constructor(private sessaoService: ContextoSessaoService, private announcerService: LiveAnnouncer) { }
 
     ngOnInit(): void {
         this.listaHabilidades = this.sessaoService.getValue('SoftSkills') || this.listaHabilidades;
@@ -32,6 +33,7 @@ export class SoftSkillsComponent implements OnInit {
 
     removerHabilidade(index: number) {
         this.listaHabilidades.splice(index, 1);
+        this.announcerService.announce('habilidade excluída');
     }
 
     ngOnDestroy(): void {

@@ -15,7 +15,7 @@
                     </td>
                     <td *ngIf="i != 0">
                         <button type="button" mat-icon-button class="mx-1" (click)="removerHabilidade(i)"
-                            [disabled]="bloquearAlteracoesSoftSkill">
+                            [disabled]="bloquearAlteracoesSoftSkill" aria-label="excluir habilidade">
                             <mat-icon>delete</mat-icon>
                         </button>
                     </td>
