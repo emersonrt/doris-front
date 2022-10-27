@@ -22,14 +22,14 @@ export class Mapper {
             turno: dados.Turnos || dados.Turno,
             modalidadeTrabalho: dados.Modalidades_de_trabalho,
             cidadeResidencia: dados.Cidade_de_residencia,
-            disponibilidadeRelocacao: true,
+            disponibilidadeRealocacao: dados.Disponibilidade_para_realocacao ? dados.Disponibilidade_para_realocacao  === 'yes' : null,
             areaInteresse: dados.Area_de_interesse_2 || dados.Area_de_interesse,
             idiomas: this.fromIdiomas(dados.arrayIdiomas),
             certificacoes: this.fromCertificacoes(dados.arrayCertificacoesFormacoes),
             experiencias: this.fromExperiencias(dados.arrayExperienciasProfissionais),
-            pontosFortes: dados.Pontos_fortes,
-            pontosFracos: dados.Pontos_fracos,
-            informacaoRelevante: dados.Informacao_relevante
+            pontosFortes: this.extrairOpcional(dados.Pontos_fortes),
+            pontosFracos: this.extrairOpcional(dados.Pontos_fracos),
+            informacaoRelevante: this.extrairOpcional(dados.Informacao_relevante)
         } as CandidatoRequest;
     }
 
@@ -40,8 +40,8 @@ export class Mapper {
                 nomeInstituicao: formacao.nome_instituicao,
                 tipoGraduacao: formacao.tipo_graduacao,
                 nomeCurso: formacao.nome_curso,
-                dataInicio: formacao.data_inicio?.value,
-                dataTermino: formacao.data_termino?.value
+                dataInicio: this.fromDatas(formacao.data_inicio?.value),
+                dataTermino: this.fromDatas(formacao.data_termino?.value)
             });
         });
         return newArray;
@@ -56,7 +56,7 @@ export class Mapper {
         arrayIdiomas.map(idioma => {
             newArray.push({
                 idioma: idioma.idioma,
-                nivelFluencia: idioma.nivelFluencia
+                nivelFluencia: idioma.nivel_fluencia
             });
         });
         return newArray;
@@ -68,7 +68,7 @@ export class Mapper {
             newArray.push({
                 nome: certificacao.nome,
                 organizacaoEmissora: certificacao.organizacao_emissora,
-                dataEmissao: certificacao.data_emissao?.value,
+                dataEmissao: this.fromDatas(certificacao.data_emissao?.value),
                 urlCodigo: certificacao.url_codigo
             });
         });
@@ -81,12 +81,20 @@ export class Mapper {
             newArray.push({
                 empresaOrganizacao: experiencia.empresa_organizacao,
                 tituloCargo: experiencia.titulo_cargo,
-                dataInicio: experiencia.data_inicio?.value,
-                dataTermino: experiencia.data_termino?.value,
-                descricao: experiencia.descricao
+                dataInicio: this.fromDatas(experiencia.data_inicio?.value),
+                dataTermino: this.fromDatas(experiencia.data_termino?.value),
+                descricao: this.extrairOpcional(experiencia.descricao)
             });
         });
         return newArray;
+    }
+
+    private static fromDatas(data: string): any {
+        return data === 'atual' ? null : '01/' + data;
+    }
+
+    private static extrairOpcional(texto: string): any {
+        return texto === 'não' ? null : texto;
     }
 
 }

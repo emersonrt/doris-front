@@ -3,25 +3,24 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CandidatoRequest } from 'src/app/models/request/CandidatoRequest';
+import { GeneralService } from '../general-service/general.service';
 
 @Injectable({
     providedIn: 'root'
 })
-export class CandidatoService {
-
-    private url = 'http://localhost:8080/api/candidato';
+export class CandidatoService extends GeneralService {
 
     constructor(
         private http: HttpClient
-    ) { }
+    ) {
+        super();
+    }
 
     buscarTodos(): Observable<CandidatoResponse[]> {
-        return this.http.get<CandidatoResponse[]>(this.url);
+        return this.http.get<CandidatoResponse[]>(this.baseUrl + 'candidato');
     }
 
     cadastrar(candidato: CandidatoRequest): Observable<CandidatoResponse> {
-        console.log('cadastro', candidato);
-        
-        return this.http.post<CandidatoResponse>(this.url, candidato);
+        return this.http.post<CandidatoResponse>(this.baseUrl + 'candidato', candidato);
     }
 }

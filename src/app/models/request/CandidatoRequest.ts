@@ -18,7 +18,7 @@ export interface CandidatoRequest {
     turno: string;
     modalidadeTrabalho: string;
     cidadeResidencia: string;
-    disponibilidadeRelocacao: boolean;
+    disponibilidadeRealocacao: boolean;
     areaInteresse: string;
     idiomas: Idioma[];
     certificacoes: Certificacao[];
