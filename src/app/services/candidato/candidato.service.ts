@@ -16,10 +16,6 @@ export class CandidatoService extends GeneralService {
         super();
     }
 
-    buscarTodos(): Observable<CandidatoResponse[]> {
-        return this.http.get<CandidatoResponse[]>(this.baseUrl + 'candidato');
-    }
-
     cadastrar(candidato: CandidatoRequest): Observable<CandidatoResponse> {
         return this.http.post<CandidatoResponse>(this.baseUrl + 'candidato', candidato);
     }
