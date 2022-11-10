@@ -292,6 +292,80 @@ export class CadastroCandidatoComponent implements OnInit, OnDestroy {
         } as unknown as CandidatoRequest;
         this.cadastrarCandidato(mock4);
 
+        const mock5 = {
+            "nome": "Usuário Novo",
+            "dataNascimento": "1999-03-09",
+            "email": "usernovo@hotmail.com",
+            "telefoneCelular": "5198567369",
+            "formacoes": [
+                {
+                    "nomeInstituicao": "Unisc",
+                    "tipoGraduacao": "Tecnólogo",
+                    "nomeCurso": "Processos Gerenciais",
+                    "dataInicio": "01/05/2017",
+                    "dataTermino": "01/12/2020"
+                },
+                {
+                    "nomeInstituicao": "Univates",
+                    "tipoGraduacao": "Bacharelado",
+                    "nomeCurso": "Administração",
+                    "dataInicio": "01/12/2020",
+                    "dataTermino": "01/12/2025"
+                }
+            ],
+            "linksRelevantes": [
+                "material.angular.io/components/tooltip/overview",
+                "wpdatatables.com/documentation/table-examples/products-table"
+            ],
+            "cargaHoraria": "Meio turno",
+            "turno": "Noite",
+            "modalidadeTrabalho": "Remoto ou Híbrido",
+            "cidadeResidencia": "Santa Cruz do Sul",
+            "disponibilidadeRealocacao": true,
+            "areaInteresse": "Inteligência Artificial",
+            "idiomas": [
+                {
+                    "idioma": "Espanhol",
+                    "nivelFluencia": "Intermediário"
+                },
+                {
+                    "idioma": "Alemão",
+                    "nivelFluencia": "Usuário independente"
+                }
+            ],
+            "certificacoes": [
+                {
+                    "nome": "JAVA1",
+                    "organizacaoEmissora": "Oracle",
+                    "dataEmissao": "01/09/2022",
+                    "urlCodigo": "ds89fs89f4u3jhr8989f9reuyfgy3489urtj34r"
+                },
+                {
+                    "nome": "JAVA2",
+                    "organizacaoEmissora": "Oracle",
+                    "dataEmissao": "01/09/2022",
+                    "urlCodigo": "dfs8u89dsvc89ds7fvhf349ewjhfr89348ufj89ewjhrf89jvc89eswrju89fvrcewu89fvrceu9re9fvjerjfvgre9fg345er8fg89fvgrej89frdesj8"
+                }
+            ],
+            "experiencias": [
+                {
+                    "empresaOrganizacao": "UNISC",
+                    "tituloCargo": "Professor",
+                    "dataInicio": "01/09/2021",
+                    "descricao": "descrição da atividade 1"
+                },
+                {
+                    "empresaOrganizacao": "UNISC",
+                    "tituloCargo": "Programador Jr",
+                    "dataInicio": "01/12/2019"
+                }
+            ],
+            "pontosFortes": "ponto forte 1, ponto forte 3",
+            "pontosFracos": "ponto fraco 2, ponto fraco 5",
+            "informacaoRelevante": "Minha carta de apresentação... Minha carta de apresentação... Minha carta de apresentação... Minha carta de apresentação... Minha carta de apresentação..."
+        } as unknown as CandidatoRequest;
+        this.cadastrarCandidato(mock5);
+
     }
 
 }
