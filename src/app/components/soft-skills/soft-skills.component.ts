@@ -47,10 +47,7 @@ export class SoftSkillsComponent implements OnInit {
     }
 
     private removeHabilidadesVazias() {
-        console.log('this.listaHabilidades antes', this.listaHabilidades);
-        
         this.listaHabilidades = this.listaHabilidades.filter(value => { return value.habilidade; });
-        console.log('this.listaHabilidades depois', this.listaHabilidades);
     }
 
 }

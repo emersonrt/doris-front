@@ -26,7 +26,6 @@ export class CadastroCandidatoComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.dataFromDorisEvent = fromEvent(window, 'sendDataToAngular').subscribe((result: any) => {
-            console.log('variaveis_salvas no app:', result?.detail);
             this.atualizaDadosSessao(result?.detail);
         });
     }
@@ -41,8 +40,6 @@ export class CadastroCandidatoComponent implements OnInit, OnDestroy {
             let hardsSkills: HardSkill[] = this.sessaoService.getValue('HardSkills');
             let softSkills: SoftSkill[] = this.sessaoService.getValue('SoftSkills');
 
-            // this.sessaoService.updateValue('DadosCandidato', Mapper.fromDoris(dados, hardsSkills, softSkills));
-            console.log('dados candidato', Mapper.fromDoris(dados, hardsSkills, softSkills));
             this.cadastrarCandidato(Mapper.fromDoris(dados, hardsSkills, softSkills));
         }
 
@@ -72,7 +69,6 @@ export class CadastroCandidatoComponent implements OnInit, OnDestroy {
     }
 
     sendData() {
-        console.log('t');
         const mock = {
             "nome": "Émerson",
             "dataNascimento": "1999-03-09",
