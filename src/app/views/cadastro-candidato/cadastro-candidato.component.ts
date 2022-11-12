@@ -69,227 +69,227 @@ export class CadastroCandidatoComponent implements OnInit, OnDestroy {
     }
 
     sendData() {
-        const mock = {
-            "nome": "Émerson",
-            "dataNascimento": "1999-03-09",
-            "email": "emersonrosateixeira@hotmail.com",
-            "telefoneCelular": "51998567167",
-            "formacoes": [
-                {
-                    "nomeInstituicao": "unisc",
-                    "tipoGraduacao": "Licenciatura",
-                    "nomeCurso": "asdsaads",
-                    "dataInicio": "01/12/2016",
-                    "dataTermino": "01/12/2025"
-                }
-            ],
-            "linksRelevantes": [],
-            "hardSkills": [
-                {
-                    "habilidade": "adsads",
-                    "tempoExperiencia": 3
-                }
-            ],
-            "cargaHoraria": "Turno integral",
-            "turno": "Manhã e noite",
-            "modalidadeTrabalho": "Remoto",
-            "areaInteresse": "Desenvolvimento de Software",
-            "idiomas": [
-                {
-                    "idioma": "Espanhol",
-                    "nivelFluencia": "Avançado"
-                }
-            ],
-            "certificacoes": [],
-            "experiencias": [],
-            "pontosFracos": "l"
-        } as unknown as CandidatoRequest;
-        this.cadastrarCandidato(mock);
+        // const mock = {
+        //     "nome": "Émerson",
+        //     "dataNascimento": "1999-03-09",
+        //     "email": "emersonrosateixeira@hotmail.com",
+        //     "telefoneCelular": "51998567167",
+        //     "formacoes": [
+        //         {
+        //             "nomeInstituicao": "unisc",
+        //             "tipoGraduacao": "Licenciatura",
+        //             "nomeCurso": "asdsaads",
+        //             "dataInicio": "01/12/2016",
+        //             "dataTermino": "01/12/2025"
+        //         }
+        //     ],
+        //     "linksRelevantes": [],
+        //     "hardSkills": [
+        //         {
+        //             "habilidade": "adsads",
+        //             "tempoExperiencia": 3
+        //         }
+        //     ],
+        //     "cargaHoraria": "Turno integral",
+        //     "turno": "Manhã e noite",
+        //     "modalidadeTrabalho": "Remoto",
+        //     "areaInteresse": "Desenvolvimento de Software",
+        //     "idiomas": [
+        //         {
+        //             "idioma": "Espanhol",
+        //             "nivelFluencia": "Avançado"
+        //         }
+        //     ],
+        //     "certificacoes": [],
+        //     "experiencias": [],
+        //     "pontosFracos": "l"
+        // } as unknown as CandidatoRequest;
+        // this.cadastrarCandidato(mock);
 
-        const mock2 = {
-            "nome": "Ana Paula Klein",
-            "dataNascimento": "1999-05-17",
-            "email": "anap@hotmail.com",
-            "telefoneCelular": "51998564456",
-            "formacoes": [
-                {
-                    "nomeInstituicao": "Unisc",
-                    "tipoGraduacao": "Licenciatura",
-                    "nomeCurso": "Teste",
-                    "dataInicio": "01/12/2016",
-                    "dataTermino": "01/12/2025"
-                }
-            ],
-            "linksRelevantes": [],
-            "hardSkills": [
-                {
-                    "habilidade": "Java",
-                    "tempoExperiencia": 3
-                },
-                {
-                    "habilidade": "PHP",
-                    "tempoExperiencia": 2
-                },
-                {
-                    "habilidade": "Angular",
-                    "tempoExperiencia": 1
-                },
-                {
-                    "habilidade": "AngularJS",
-                    "tempoExperiencia": 2
-                }
-            ],
-            "softSkills": [
-                {
-                    "habilidade": "Comunicação"
-                },
-                {
-                    "habilidade": "Resolução de Problemas"
-                }
-            ],
-            "cargaHoraria": "Turno integral",
-            "turno": "Manhã e noite",
-            "modalidadeTrabalho": "Remoto",
-            "areaInteresse": "Desenvolvimento de Software",
-            "idiomas": [
-                {
-                    "idioma": "Inglês",
-                    "nivelFluencia": "Proficiência operativa eficaz"
-                }
-            ],
-            "certificacoes": [
-                {
-                    "nome": "Formação Java",
-                    "organizacaoEmissora": "Alura",
-                    "dataEmissao": "01/06/2022",
-                    "urlCodigo": "https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component"
-                }
-            ],
-            "experiencias": [
-                {
-                    "empresaOrganizacao": "BRQ Digital Solutions",
-                    "tituloCargo": "Programador Pleno",
-                    "dataInicio": "01/11/2021",
-                    "dataTermino": null,
-                    "descricao": null
-                }
-            ]
-        } as unknown as CandidatoRequest;
-        this.cadastrarCandidato(mock2);
+        // const mock2 = {
+        //     "nome": "Ana Paula Klein",
+        //     "dataNascimento": "1999-05-17",
+        //     "email": "anap@hotmail.com",
+        //     "telefoneCelular": "51998564456",
+        //     "formacoes": [
+        //         {
+        //             "nomeInstituicao": "Unisc",
+        //             "tipoGraduacao": "Licenciatura",
+        //             "nomeCurso": "Teste",
+        //             "dataInicio": "01/12/2016",
+        //             "dataTermino": "01/12/2025"
+        //         }
+        //     ],
+        //     "linksRelevantes": [],
+        //     "hardSkills": [
+        //         {
+        //             "habilidade": "Java",
+        //             "tempoExperiencia": 3
+        //         },
+        //         {
+        //             "habilidade": "PHP",
+        //             "tempoExperiencia": 2
+        //         },
+        //         {
+        //             "habilidade": "Angular",
+        //             "tempoExperiencia": 1
+        //         },
+        //         {
+        //             "habilidade": "AngularJS",
+        //             "tempoExperiencia": 2
+        //         }
+        //     ],
+        //     "softSkills": [
+        //         {
+        //             "habilidade": "Comunicação"
+        //         },
+        //         {
+        //             "habilidade": "Resolução de Problemas"
+        //         }
+        //     ],
+        //     "cargaHoraria": "Turno integral",
+        //     "turno": "Manhã e noite",
+        //     "modalidadeTrabalho": "Remoto",
+        //     "areaInteresse": "Desenvolvimento de Software",
+        //     "idiomas": [
+        //         {
+        //             "idioma": "Inglês",
+        //             "nivelFluencia": "Proficiência operativa eficaz"
+        //         }
+        //     ],
+        //     "certificacoes": [
+        //         {
+        //             "nome": "Formação Java",
+        //             "organizacaoEmissora": "Alura",
+        //             "dataEmissao": "01/06/2022",
+        //             "urlCodigo": "https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component"
+        //         }
+        //     ],
+        //     "experiencias": [
+        //         {
+        //             "empresaOrganizacao": "BRQ Digital Solutions",
+        //             "tituloCargo": "Programador Pleno",
+        //             "dataInicio": "01/11/2021",
+        //             "dataTermino": null,
+        //             "descricao": null
+        //         }
+        //     ]
+        // } as unknown as CandidatoRequest;
+        // this.cadastrarCandidato(mock2);
 
-        const mock3 = {
-            "nome": "Douglas T. Teste",
-            "dataNascimento": "1988-05-17",
-            "email": "doug@hotmail.com",
-            "telefoneCelular": "51998564456",
-            "formacoes": [
-                {
-                    "nomeInstituicao": "Unisc",
-                    "tipoGraduacao": "Licenciatura",
-                    "nomeCurso": "Teste",
-                    "dataInicio": "01/12/2016",
-                    "dataTermino": "01/12/2025"
-                }
-            ],
-            "linksRelevantes": [],
-            "hardSkills": [
-                {
-                    "habilidade": "Java",
-                    "tempoExperiencia": 3
-                },
-                {
-                    "habilidade": "PHP",
-                    "tempoExperiencia": 2
-                }
-            ],
-            "softSkills": [
-                {
-                    "habilidade": "Comunicação"
-                }
-            ],
-            "cargaHoraria": "Turno integral",
-            "turno": "Manhã e noite",
-            "modalidadeTrabalho": "Remoto",
-            "areaInteresse": "Desenvolvimento de Software",
-            "idiomas": [
-            ],
-            "certificacoes": [
-                {
-                    "nome": "Formação Java",
-                    "organizacaoEmissora": "Alura",
-                    "dataEmissao": "01/06/2022",
-                    "urlCodigo": "https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component"
-                }
-            ],
-            "experiencias": [
-                {
-                    "empresaOrganizacao": "BRQ Digital Solutions",
-                    "tituloCargo": "Programador Pleno",
-                    "dataInicio": "01/11/2021",
-                    "dataTermino": null,
-                    "descricao": null
-                }
-            ]
-        } as unknown as CandidatoRequest;
-        this.cadastrarCandidato(mock3);
+        // const mock3 = {
+        //     "nome": "Douglas T. Teste",
+        //     "dataNascimento": "1988-05-17",
+        //     "email": "doug@hotmail.com",
+        //     "telefoneCelular": "51998564456",
+        //     "formacoes": [
+        //         {
+        //             "nomeInstituicao": "Unisc",
+        //             "tipoGraduacao": "Licenciatura",
+        //             "nomeCurso": "Teste",
+        //             "dataInicio": "01/12/2016",
+        //             "dataTermino": "01/12/2025"
+        //         }
+        //     ],
+        //     "linksRelevantes": [],
+        //     "hardSkills": [
+        //         {
+        //             "habilidade": "Java",
+        //             "tempoExperiencia": 3
+        //         },
+        //         {
+        //             "habilidade": "PHP",
+        //             "tempoExperiencia": 2
+        //         }
+        //     ],
+        //     "softSkills": [
+        //         {
+        //             "habilidade": "Comunicação"
+        //         }
+        //     ],
+        //     "cargaHoraria": "Turno integral",
+        //     "turno": "Manhã e noite",
+        //     "modalidadeTrabalho": "Remoto",
+        //     "areaInteresse": "Desenvolvimento de Software",
+        //     "idiomas": [
+        //     ],
+        //     "certificacoes": [
+        //         {
+        //             "nome": "Formação Java",
+        //             "organizacaoEmissora": "Alura",
+        //             "dataEmissao": "01/06/2022",
+        //             "urlCodigo": "https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component"
+        //         }
+        //     ],
+        //     "experiencias": [
+        //         {
+        //             "empresaOrganizacao": "BRQ Digital Solutions",
+        //             "tituloCargo": "Programador Pleno",
+        //             "dataInicio": "01/11/2021",
+        //             "dataTermino": null,
+        //             "descricao": null
+        //         }
+        //     ]
+        // } as unknown as CandidatoRequest;
+        // this.cadastrarCandidato(mock3);
 
-        const mock4 = {
-            "nome": "Jon Snow",
-            "dataNascimento": "1977-05-17",
-            "email": "snowland@hotmail.com",
-            "telefoneCelular": "51998566598",
-            "formacoes": [
-                {
-                    "nomeInstituicao": "Unisc",
-                    "tipoGraduacao": "Licenciatura",
-                    "nomeCurso": "Teste",
-                    "dataInicio": "01/12/2016",
-                    "dataTermino": "01/12/2025"
-                }
-            ],
-            "linksRelevantes": [],
-            "hardSkills": [
-                {
-                    "habilidade": "PHP",
-                    "tempoExperiencia": 2
-                }
-            ],
-            "softSkills": [
-                {
-                    "habilidade": "Habilidade com Espadas"
-                },
-                {
-                    "habilidade": "Comunicação"
-                }
-            ],
-            "cargaHoraria": "Turno integral",
-            "turno": "Manhã e noite",
-            "modalidadeTrabalho": "Remoto",
-            "areaInteresse": "Desenvolvimento de Software",
-            "idiomas": [
-            ],
-            "certificacoes": [
-                {
-                    "nome": "Formação Java",
-                    "organizacaoEmissora": "Alura",
-                    "dataEmissao": "01/06/2022",
-                    "urlCodigo": "https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component"
-                }
-            ],
-            "experiencias": [
-                {
-                    "empresaOrganizacao": "BRQ Digital Solutions",
-                    "tituloCargo": "Programador Pleno",
-                    "dataInicio": "01/11/2021",
-                    "dataTermino": null,
-                    "descricao": null
-                }
-            ]
-        } as unknown as CandidatoRequest;
-        this.cadastrarCandidato(mock4);
+        // const mock4 = {
+        //     "nome": "Jon Snow",
+        //     "dataNascimento": "1977-05-17",
+        //     "email": "snowland@hotmail.com",
+        //     "telefoneCelular": "51998566598",
+        //     "formacoes": [
+        //         {
+        //             "nomeInstituicao": "Unisc",
+        //             "tipoGraduacao": "Licenciatura",
+        //             "nomeCurso": "Teste",
+        //             "dataInicio": "01/12/2016",
+        //             "dataTermino": "01/12/2025"
+        //         }
+        //     ],
+        //     "linksRelevantes": [],
+        //     "hardSkills": [
+        //         {
+        //             "habilidade": "PHP",
+        //             "tempoExperiencia": 2
+        //         }
+        //     ],
+        //     "softSkills": [
+        //         {
+        //             "habilidade": "Habilidade com Espadas"
+        //         },
+        //         {
+        //             "habilidade": "Comunicação"
+        //         }
+        //     ],
+        //     "cargaHoraria": "Turno integral",
+        //     "turno": "Manhã e noite",
+        //     "modalidadeTrabalho": "Remoto",
+        //     "areaInteresse": "Desenvolvimento de Software",
+        //     "idiomas": [
+        //     ],
+        //     "certificacoes": [
+        //         {
+        //             "nome": "Formação Java",
+        //             "organizacaoEmissora": "Alura",
+        //             "dataEmissao": "01/06/2022",
+        //             "urlCodigo": "https://docs.jboss.org/hibernate/core/3.6/reference/en-US/html/mapping.html#mapping-declaration-component"
+        //         }
+        //     ],
+        //     "experiencias": [
+        //         {
+        //             "empresaOrganizacao": "BRQ Digital Solutions",
+        //             "tituloCargo": "Programador Pleno",
+        //             "dataInicio": "01/11/2021",
+        //             "dataTermino": null,
+        //             "descricao": null
+        //         }
+        //     ]
+        // } as unknown as CandidatoRequest;
+        // this.cadastrarCandidato(mock4);
 
         const mock5 = {
-            "nome": "Usuário Novo",
+            "nome": "Arya Stark",
             "dataNascimento": "1999-03-09",
             "email": "usernovo@hotmail.com",
             "telefoneCelular": "5198567369",
@@ -312,6 +312,40 @@ export class CadastroCandidatoComponent implements OnInit, OnDestroy {
             "linksRelevantes": [
                 "material.angular.io/components/tooltip/overview",
                 "wpdatatables.com/documentation/table-examples/products-table"
+            ],
+            "hardSkills": [
+                {
+                    "habilidade": "SEO",
+                    "tempoExperiencia": 1
+                },
+                {
+                    "habilidade": "Swift",
+                    "tempoExperiencia": 5
+                },
+                {
+                    "habilidade": "Jira",
+                    "tempoExperiencia": 5
+                },
+                {
+                    "habilidade": "React",
+                    "tempoExperiencia": 1
+                },
+                {
+                    "habilidade": "React Native",
+                    "tempoExperiencia": 5
+                },
+                {
+                    "habilidade": "Linux",
+                    "tempoExperiencia": 5
+                }
+            ],
+            "softSkills": [
+                {
+                    "habilidade": "Habilidade com Espadas"
+                },
+                {
+                    "habilidade": "Paciência"
+                }
             ],
             "cargaHoraria": "Meio turno",
             "turno": "Noite",
