@@ -94,7 +94,7 @@ export class Mapper {
     }
 
     private static extrairOpcional(texto: string): any {
-        return texto === 'não' ? null : texto;
+        return texto === 'não' || texto === 'nao' || texto === 'n' || texto === 'na' ? null : texto;
     }
 
 }
