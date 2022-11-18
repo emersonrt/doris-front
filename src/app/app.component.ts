@@ -1,3 +1,4 @@
+import { CandidatoService } from 'src/app/services/candidato/candidato.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-    constructor() { }
+    constructor(private candidatoService: CandidatoService) { }
 
     ngOnInit(): void {
+        this.candidatoService.wakeUpHeroku().subscribe({
+            next: value => { },
+            error: err => { }
+        });
     }
 
 }

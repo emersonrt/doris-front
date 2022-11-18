@@ -19,4 +19,8 @@ export class CandidatoService extends GeneralService {
     cadastrar(candidato: CandidatoRequest): Observable<CandidatoResponse> {
         return this.http.post<CandidatoResponse>(this.baseUrl + 'candidato', candidato);
     }
+
+    wakeUpHeroku(): Observable<boolean> {
+        return this.http.get<boolean>(this.baseUrl + 'candidato/wakeup');
+    }
 }
