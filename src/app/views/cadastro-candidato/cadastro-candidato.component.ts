@@ -43,9 +43,17 @@ export class CadastroCandidatoComponent implements OnInit, OnDestroy {
             this.cadastrarCandidato(Mapper.fromDoris(dados, hardsSkills, softSkills));
         }
 
+        this.wakeUpHeroku();
         this.expressaoDoris = this.getExpressaoDoris(dados.Emocao_doris);
         this.sessaoService.updateValue('HardSkillsConfirmado', dados.Confirmar_hard_skills);
         this.sessaoService.updateValue('SoftSkillsConfirmado', dados.Confirmar_soft_skills);
+    }
+
+    private wakeUpHeroku() {
+        this.candidatoService.wakeUpHeroku().subscribe({
+            next: value => { },
+            error: err => { }
+        });
     }
 
     private getExpressaoDoris(dadosEmocao: any): EmocoesDoris {
