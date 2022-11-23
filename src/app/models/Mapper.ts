@@ -94,6 +94,7 @@ export class Mapper {
     }
 
     private static extrairOpcional(texto: string): any {
+        texto = texto.toLocaleLowerCase();
         return texto === 'não' || texto === 'nao' || texto === 'n' || texto === 'na' ? null : texto;
     }
 
