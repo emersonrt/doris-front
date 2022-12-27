@@ -6,7 +6,6 @@ import { BehaviorSubject, Observable, Subject, filter, map, fromEvent } from 'rx
 })
 export class ContextoSessaoService {
 
-    // private dataSource: any = {};
     private storage: Storage;
 
     constructor() {
